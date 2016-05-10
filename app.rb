@@ -1,6 +1,12 @@
 #encoding: utf-8
 require 'sinatra'
 require 'sinatra/reloader'
+require 'sinatra/activerecord'
+
+set :database, "sqlite3:candyshop.db"
+
+class Client < ActiveRecord::Base
+end
 
 # процедура инициализации
 configure do
