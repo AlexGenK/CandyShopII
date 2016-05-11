@@ -8,6 +8,9 @@ set :database, "sqlite3:candyshop.db"
 class Client < ActiveRecord::Base
 end
 
+class Candy < ActiveRecord::Base
+end
+
 # процедура инициализации
 configure do
 
