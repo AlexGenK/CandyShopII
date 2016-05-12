@@ -1,0 +1,7 @@
+<h2>Our Candies</h2>
+<br/>
+<% @candies.each do |c| %>
+	<p>
+	<%= c.id %> - <%= c.candyname %>
+	</p>
+<% end %>

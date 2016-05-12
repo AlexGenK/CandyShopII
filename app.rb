@@ -18,7 +18,8 @@ end
 
 # главная страница
 get '/' do
-	erb "<h1> Hello! </h1>"
+	@candies=Candy.all
+	erb :index
 end
 
 # 1
