@@ -18,7 +18,7 @@ end
 
 # главная страница
 get '/' do
-	@candies=Candy.all
+	@candies=Candy.order "candyname"
 	erb :index
 end
 
