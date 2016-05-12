@@ -1,0 +1,64 @@
+<!-- обработка записи на визит  -->
+
+<!-- Запуск плагинов colorpicker и datetimepicker-->
+<script type="text/javascript">
+  // причем плагины запустится только после загрузки страницы
+  $(function(){
+    $('#colorpicker').simplecolorpicker({theme: 'glyphicons'});
+    $.datetimepicker.setLocale('ru');
+    $('#datetimepicker').datetimepicker({step: 30});
+  })
+</script>
+
+<h3>Make an appointment</h3>
+<p>Here you can make an appointment for visit in the Candy Shop</p>
+
+<form action="/visit" method="POST">
+
+<div class='col-sm-6'>
+  <!-- Имя -->
+  <div class="form-group">
+    <label>Your name</label>
+    <input name = "username" type="text" class="form-control" placeholder="Name" required value="<%= @username %>">
+  </div>
+
+  <!-- Телефон -->
+  <div class="form-group">
+    <label>Phone</label>
+    <input name = "phone" type="text" class="form-control" placeholder="Phone" required value="<%= @phone %>">
+  </div>
+
+  <!-- время визита -->
+  <div class="form-group">
+      <label>Data and Time</label>
+      <input name = "data" id='datetimepicker' type="text" class="form-control" placeholder="Data and Time" required value="<%= @data %>">
+  </div>
+
+  <!-- К кому -->
+  <div class="form-group">
+    <label>Who is your Candy?</label>
+    <select name = "candy" class="form-control">
+      <!-- Элементы списка берутся из БД с сохранением предыдущего значения -->
+      <% $candies.each do |c| %>
+          <option <%= @candy==c.candyname ? "selected" : "" %>> <%= c.candyname %> </option>
+      <% end %>
+    </select>
+  </div>
+
+  <!-- Выбор цвета -->
+  <div class="form-group">
+    <label>Or what color you prefered?</label>
+      <select id="colorpicker" name="colorpicker">
+        <!-- Сохраняется предыдущее введенное значение -->
+        <option value="White" <%= @colorpicker=="White" ? "selected" : "" %>>White</option>
+        <option value="Black" <%= @colorpicker=="Black" ? "selected" : "" %>>Black</option>
+        <option value="Yellow" <%= @colorpicker=="Yellow" ? "selected" : "" %>>Yellow</option>
+        <option value="Red" <%= @colorpicker=="Red" ? "selected" : "" %>>Red</option>
+      </select>
+  </div>
+
+  <!-- Отправка формы -->
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  </div>
+</form>
