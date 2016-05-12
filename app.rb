@@ -14,6 +14,10 @@ end
 class Candy < ActiveRecord::Base
 end
 
+# Сущность/таблица - контакт
+class Contact < ActiveRecord::Base
+end
+
 # процедура инициализации
 configure do
 	# список конфеток
@@ -30,14 +34,14 @@ get '/visit' do
 	erb :visit
 end
 
-# 2
-get '/two' do
-	erb "<h2> Two </h2>"
+# отправка сообщений
+get '/contacts' do
+	erb :contacts
 end
 
 # 3
 get '/three' do
-	erb "<h2> Three </h2>"
+	erb "<h3> Three </h3>"
 end
 
 # обработка записи
@@ -57,6 +61,19 @@ post '/visit' do
   				  :color => @colorpicker
 
 	erb "<h3>Success! We wait you</h3>"
+
+end
+
+post '/contacts' do
+
+	# переменные содержащие значения полей ввода
+	@email=params[:email]
+	@message=params[:message]
+
+	Contact.create :email => @email, 
+				   :message => @message
+	
+	erb "<h3>Thank You! Your message will be reviewed in the near future.</h3>"
 
 end
 

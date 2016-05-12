@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511121445) do
+ActiveRecord::Schema.define(version: 20160512185941) do
 
   create_table "candies", force: :cascade do |t|
     t.text     "candyname"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20160511121445) do
     t.text     "date"
     t.text     "candy"
     t.text     "color"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.text     "email"
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
