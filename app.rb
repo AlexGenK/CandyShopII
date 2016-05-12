@@ -50,7 +50,13 @@ post '/visit' do
 	@candy=params[:candy]
 	@colorpicker=params[:colorpicker]
 
-	erb :visit
+	Client.create :name => @username, 
+  				  :phone => @phone,
+  				  :date => @data,
+  				  :candy => @candy,
+  				  :color => @colorpicker
+
+	erb "<h3>Success! We wait you</h3>"
 
 end
 
