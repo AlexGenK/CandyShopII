@@ -6,8 +6,7 @@ class CreateCandies < ActiveRecord::Migration
 
   		c.timestamps
   	end
-
-  	Candy.create :candyname => 'anyone'
+  	
   	Candy.create :candyname => 'Foxie'
   	Candy.create :candyname => 'Angela'
   	Candy.create :candyname => 'Tasha'
