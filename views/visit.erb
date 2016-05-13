@@ -19,25 +19,25 @@
   <!-- Имя -->
   <div class="form-group">
     <label>Your name</label>
-    <input name = "username" type="text" class="form-control" placeholder="Name" required value="<%= @username %>">
+    <input name = "aaa[name]" type="text" class="form-control" placeholder="Name" required value="">
   </div>
 
   <!-- Телефон -->
   <div class="form-group">
     <label>Phone</label>
-    <input name = "phone" type="text" class="form-control" placeholder="Phone" required value="<%= @phone %>">
+    <input name = "aaa[phone]" type="text" class="form-control" placeholder="Phone" required value="">
   </div>
 
   <!-- время визита -->
   <div class="form-group">
       <label>Data and Time</label>
-      <input name = "data" id='datetimepicker' type="text" class="form-control" placeholder="Data and Time" required value="<%= @data %>">
+      <input name = "aaa[date]" id='datetimepicker' type="text" class="form-control" placeholder="Data and Time" required value="">
   </div>
 
   <!-- К кому -->
   <div class="form-group">
     <label>Who is your Candy?</label>
-    <select name = "candy" class="form-control">
+    <select name = "aaa[candy]" class="form-control">
       <!-- Элементы списка берутся из БД с сохранением предыдущего значения -->
       <% $candies.each do |c| %>
           <option <%= @candy==c.candyname ? "selected" : "" %>> <%= c.candyname %> </option>
@@ -48,7 +48,7 @@
   <!-- Выбор цвета -->
   <div class="form-group">
     <label>Or what color you prefered?</label>
-      <select id="colorpicker" name="colorpicker">
+      <select id="colorpicker" name="client[color]">
         <!-- Сохраняется предыдущее введенное значение -->
         <option value="White" <%= @colorpicker=="White" ? "selected" : "" %>>White</option>
         <option value="Black" <%= @colorpicker=="Black" ? "selected" : "" %>>Black</option>

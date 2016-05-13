@@ -47,18 +47,8 @@ end
 # обработка записи
 post '/visit' do
 
-	# переменные содержащие значения полей ввода
-	@username=params[:username]
-	@phone=params[:phone]
-	@data=params[:data]
-	@candy=params[:candy]
-	@colorpicker=params[:colorpicker]
-
-	Client.create :name => @username, 
-  				  :phone => @phone,
-  				  :date => @data,
-  				  :candy => @candy,
-  				  :color => @colorpicker
+	c=Client.new params[:aaa]
+	c.save
 
 	erb "<h3>Success! We wait you</h3>"
 
@@ -66,12 +56,8 @@ end
 
 post '/contacts' do
 
-	# переменные содержащие значения полей ввода
-	@email=params[:email]
-	@message=params[:message]
-
-	Contact.create :email => @email, 
-				   :message => @message
+	c=Contact.new params[:aaa]
+	c.save
 	
 	erb "<h3>Thank You! Your message will be reviewed in the near future.</h3>"
 
