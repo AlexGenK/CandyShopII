@@ -8,6 +8,8 @@ set :database, "sqlite3:candyshop.db"
 
 # Сущность/таблица - клиент
 class Client < ActiveRecord::Base
+	# валидация полей таблицы
+	validates :name, :phone, :date, presence: true
 end
 
 # Сущность/таблица - конфетка
@@ -47,13 +49,21 @@ end
 # обработка записи
 post '/visit' do
 
+	# создание нового объекта в таблице с введенными параметрами
 	c=Client.new params[:aaa]
-	c.save
 
-	erb "<h3>Success! We wait you</h3>"
+	# запись нового объекта. если запись неуспешна, т.е. не прошла валидация,
+	# выводится сообщение об ошибке
+	if c.save
+		erb "<h3>Success! We wait you</h3>"
+	else
+		@error="Some field is empty. Enter full information."
+		erb :visit
+	end
 
 end
 
+# обработка отправки сообщений
 post '/contacts' do
 
 	c=Contact.new params[:aaa]
@@ -61,13 +71,4 @@ post '/contacts' do
 	
 	erb "<h3>Thank You! Your message will be reviewed in the near future.</h3>"
 
-end
-
-
-# возвращает сообщение о возможных ошибках. принмимает хеш с парой
-# имя_параметра=>выводимое сообщение. если параметр пустой, формируется сообщение
-def get_error_message(hh)
-	err=""
-	hh.each_key {|param| err+=hh[param] if params[param].strip==""}
-	return err
 end
