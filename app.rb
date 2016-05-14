@@ -57,7 +57,7 @@ post '/visit' do
 	if c.save
 		erb "<h3>Success! We wait you</h3>"
 	else
-		@error="Some field is empty. Enter full information."
+		@error=c.errors.full_messages.first
 		erb :visit
 	end
 
