@@ -33,6 +33,7 @@ end
 
 # запись
 get '/visit' do
+	$c=Client.new
 	erb :visit
 end
 
@@ -50,14 +51,14 @@ end
 post '/visit' do
 
 	# создание нового объекта в таблице с введенными параметрами
-	c=Client.new params[:aaa]
+	$c=Client.new params[:aaa]
 
 	# запись нового объекта. если запись неуспешна, т.е. не прошла валидация,
 	# выводится сообщение об ошибке
-	if c.save
+	if $c.save
 		erb "<h3>Success! We wait you</h3>"
 	else
-		@error=c.errors.full_messages.first
+		@error=$c.errors.full_messages.first
 		erb :visit
 	end
 

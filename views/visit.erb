@@ -19,19 +19,19 @@
   <!-- Имя -->
   <div class="form-group">
     <label>Your name</label>
-    <input name = "aaa[name]" type="text" class="form-control" placeholder="Name" value="">
+    <input name = "aaa[name]" type="text" class="form-control" placeholder="Name" value="<%= $c.name %>">
   </div>
 
   <!-- Телефон -->
   <div class="form-group">
     <label>Phone</label>
-    <input name = "aaa[phone]" type="text" class="form-control" placeholder="Phone" value="">
+    <input name = "aaa[phone]" type="text" class="form-control" placeholder="Phone" value="<%= $c.phone %>">
   </div>
 
   <!-- время визита -->
   <div class="form-group">
       <label>Data and Time</label>
-      <input name = "aaa[date]" id='datetimepicker' type="text" class="form-control" placeholder="Data and Time" value="">
+      <input name = "aaa[date]" id='datetimepicker' type="text" class="form-control" placeholder="Data and Time" value="<%= $c.date %>">
   </div>
 
   <!-- К кому -->
@@ -40,7 +40,7 @@
     <select name = "aaa[candy]" class="form-control">
       <!-- Элементы списка берутся из БД с сохранением предыдущего значения -->
       <% $candies.each do |c| %>
-          <option <%= @candy==c.candyname ? "selected" : "" %>> <%= c.candyname %> </option>
+          <option <%= $c.candy==c.candyname ? "selected" : "" %>> <%= c.candyname %> </option>
       <% end %>
     </select>
   </div>
@@ -48,12 +48,12 @@
   <!-- Выбор цвета -->
   <div class="form-group">
     <label>Or what color you prefered?</label>
-      <select id="colorpicker" name="client[color]">
+      <select id="colorpicker" name="aaa[color]">
         <!-- Сохраняется предыдущее введенное значение -->
-        <option value="White" <%= @colorpicker=="White" ? "selected" : "" %>>White</option>
-        <option value="Black" <%= @colorpicker=="Black" ? "selected" : "" %>>Black</option>
-        <option value="Yellow" <%= @colorpicker=="Yellow" ? "selected" : "" %>>Yellow</option>
-        <option value="Red" <%= @colorpicker=="Red" ? "selected" : "" %>>Red</option>
+        <option value="White" <%= $c.color=="White" ? "selected" : "" %>>White</option>
+        <option value="Black" <%= $c.color=="Black" ? "selected" : "" %>>Black</option>
+        <option value="Yellow" <%= $c.color=="Yellow" ? "selected" : "" %>>Yellow</option>
+        <option value="Red" <%= $c.color=="Red" ? "selected" : "" %>>Red</option>
       </select>
   </div>
 
