@@ -6,7 +6,7 @@ require 'sinatra/activerecord'
 # обявление БД
 set :database, "sqlite3:candyshop.db"
 
-# Сущность/таблица - клиент
+# Сущность/таблица/модель - клиент
 class Client < ActiveRecord::Base
 	# валидация полей таблицы
 	validates :name, :phone, :date, presence: true
@@ -14,11 +14,11 @@ class Client < ActiveRecord::Base
 	validates :name, length: {minimum: 2}
 end
 
-# Сущность/таблица - конфетка
+# Сущность/таблица/модель - конфетка
 class Candy < ActiveRecord::Base
 end
 
-# Сущность/таблица - контакт
+# Сущность/таблица/модель - контакт
 class Contact < ActiveRecord::Base
 end
 
@@ -47,6 +47,12 @@ end
 # 3
 get '/three' do
 	erb "<h3> Three </h3>"
+end
+
+# личные страницы конфеток
+get '/candy/:id' do
+	@candy=Candy.find(params[:id])
+	erb :candy
 end
 
 # обработка записи

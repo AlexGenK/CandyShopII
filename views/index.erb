@@ -3,6 +3,6 @@
 <br/>
 <% $candies.each do |c| %>
 	<p>
-	<%= c.candyname %>
+	<a href="/candy/<%= c.id%>"><%= c.candyname %></a>
 	</p>
 <% end %>
