@@ -10,6 +10,8 @@ set :database, "sqlite3:candyshop.db"
 class Client < ActiveRecord::Base
 	# валидация полей таблицы
 	validates :name, :phone, :date, presence: true
+	validates :phone, format: {with: /\A[\d() +-]{5,}\z/, message: "is incorrect."}
+	validates :name, length: {minimum: 2}
 end
 
 # Сущность/таблица - конфетка
