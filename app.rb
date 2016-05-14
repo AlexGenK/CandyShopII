@@ -44,9 +44,10 @@ get '/contacts' do
 	erb :contacts
 end
 
-# 3
-get '/three' do
-	erb "<h3> Three </h3>"
+# список записавшихся
+get '/visitlist' do
+	@visit=Client.order "date"
+	erb :visitlist
 end
 
 # личные страницы конфеток

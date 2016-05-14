@@ -1,0 +1,28 @@
+<h3>List of visits</h3>
+</br>
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Date</th>
+			<th>Candy</th>
+			<th>Color</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% i=1 %>
+		<% @visit.each do |vis| %>
+			<tr>
+				<td><%= i %></td>
+				<td><%= vis.name %></td>
+				<td><%= vis.phone %></td>
+				<td><%= vis.date %></td>
+				<td><%= vis.candy %></td>
+				<td><%= vis.color %></td>
+			</tr>
+			<% i+=1 %>
+		<% end %>
+	</tbody>
+</table>
